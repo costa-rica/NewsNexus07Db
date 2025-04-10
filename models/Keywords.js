@@ -8,7 +8,10 @@ const Keywords = sequelize.define("Keywords", {
   },
   category: {
     type: DataTypes.STRING,
-    // allowNull: false,
+  },
+  isArchived: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
   },
 });
 
