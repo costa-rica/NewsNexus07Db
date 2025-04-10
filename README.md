@@ -5,7 +5,7 @@ A Sequelize SQLite module for the NewsNexus05Db and microservices suite of appli
 ## installation
 
 1. `npm init -y`
-2. `npm install sequelize sqlite3`
+2. `yarn add sequelize sqlite3`
 
 ## import to other apps
 

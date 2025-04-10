@@ -1,40 +1,114 @@
-const Player = require("./Player");
-const PlayerContract = require("./PlayerContract");
-const Team = require("./Team");
-const Match = require("./Match");
-const Script = require("./Script");
-const SyncContract = require("./SyncContract");
-const Video = require("./Video");
-const Action = require("./Action");
+const {
+  User,
+  ArticleKeywordContract,
+  EntityWhoFoundArticle,
+  EntityWhoCategorizedArticle,
+  ArtificialIntelligence,
+  State,
+  Report,
+  ArticleStateContract,
+  ArticleReportContract,
+  ArticleReviewed,
+  ArticleApproved,
+  ArticleDuplicate,
+  NewsApiRequest,
+  NewsRssRequest,
+  NewsArticleAggregatorSource,
+  Article,
+  ArticleContent,
+} = require("./_index");
 
-// Define associations **after** models are imported
-
-// 🔹 Player & Team Associations
-Player.hasMany(PlayerContract, { foreignKey: "playerId", onDelete: "CASCADE" });
-Team.hasMany(PlayerContract, { foreignKey: "teamId", onDelete: "CASCADE" });
-PlayerContract.belongsTo(Player, { foreignKey: "playerId" });
-PlayerContract.belongsTo(Team, { foreignKey: "teamId" });
-
-// 🔹 Match & Team Associations
-Match.belongsTo(Team, { foreignKey: "teamIdAnalyzed", as: "teamOne" }); // Team analyzed
-Match.belongsTo(Team, { foreignKey: "teamIdOpponent", as: "teamTwo" }); // Team opponent
-
-// 🔹 Script & SyncContract Associations (1-N)
-Script.hasMany(SyncContract, { foreignKey: "scriptId", onDelete: "CASCADE" });
-SyncContract.belongsTo(Script, { foreignKey: "scriptId" });
-
-// 🔹 Video & SyncContract Associations (0-N)
-Video.hasMany(SyncContract, { foreignKey: "videoId", onDelete: "CASCADE" });
-SyncContract.belongsTo(Video, { foreignKey: "videoId" });
-
-// 🔹 Video & Match Association (moved from Video.js)
-Video.belongsTo(Match, { foreignKey: "matchId", as: "match" });
-
-// 🔹 SyncContract & Action Associations (1-N)
-SyncContract.hasMany(Action, {
-  foreignKey: "syncContractId",
-  onDelete: "CASCADE",
+// --- EntityWhoCategorizedArticle associations ---
+EntityWhoCategorizedArticle.hasMany(ArticleKeywordContract, {
+  foreignKey: "entityWhoCategorizesId",
 });
-Action.belongsTo(SyncContract, { foreignKey: "syncContractId" });
+
+ArticleKeywordContract.belongsTo(EntityWhoCategorizedArticle, {
+  foreignKey: "entityWhoCategorizesId",
+});
+// --- ArtificialIntelligence associations ---
+ArtificialIntelligence.hasMany(EntityWhoCategorizedArticle, {
+  foreignKey: "artificialIntelligenceId",
+});
+EntityWhoCategorizedArticle.belongsTo(ArtificialIntelligence, {
+  foreignKey: "artificialIntelligenceId",
+});
+// --- State associations ---
+State.hasMany(ArticleStateContract, { foreignKey: "stateId" });
+ArticleStateContract.belongsTo(State, { foreignKey: "stateId" });
+// --- Report associations ---
+Report.hasMany(ArticleReportContract, { foreignKey: "reportId" });
+ArticleReportContract.belongsTo(Report, { foreignKey: "reportId" });
+
+// --- User associations ---
+User.hasMany(EntityWhoCategorizedArticle, { foreignKey: "userId" });
+EntityWhoCategorizedArticle.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(EntityWhoFoundArticle, { foreignKey: "userId" });
+EntityWhoFoundArticle.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(Report, { foreignKey: "userId" });
+Report.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(ArticleReviewed, { foreignKey: "userId" });
+ArticleReviewed.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(ArticleApproved, { foreignKey: "userId" });
+ArticleApproved.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(ArticleDuplicate, { foreignKey: "userId" });
+ArticleDuplicate.belongsTo(User, { foreignKey: "userId" });
+
+// --- NewsArticleAggregatorSource associations ---
+NewsArticleAggregatorSource.hasOne(EntityWhoFoundArticle, {
+  foreignKey: "newsArticleAggregatorSourceId",
+});
+EntityWhoFoundArticle.belongsTo(NewsArticleAggregatorSource, {
+  foreignKey: "newsArticleAggregatorSourceId",
+});
+
+NewsArticleAggregatorSource.hasOne(NewsApiRequest, {
+  foreignKey: "newsArticleAggregatorSourceId",
+});
+NewsApiRequest.belongsTo(NewsArticleAggregatorSource, {
+  foreignKey: "newsArticleAggregatorSourceId",
+});
+
+NewsArticleAggregatorSource.hasOne(NewsRssRequest, {
+  foreignKey: "newsArticleAggregatorSourceId",
+});
+NewsRssRequest.belongsTo(NewsArticleAggregatorSource, {
+  foreignKey: "newsArticleAggregatorSourceId",
+});
+
+// --- Article associations ---
+Article.hasMany(ArticleStateContract, { foreignKey: "articleId" });
+ArticleStateContract.belongsTo(Article, { foreignKey: "articleId" });
+
+Article.hasMany(ArticleKeywordContract, { foreignKey: "articleId" });
+ArticleKeywordContract.belongsTo(Article, { foreignKey: "articleId" });
+
+Article.hasMany(ArticleContent, { foreignKey: "articleId" });
+ArticleContent.belongsTo(Article, { foreignKey: "articleId" });
+
+Article.hasMany(ArticleReportContract, { foreignKey: "articleId" });
+ArticleReportContract.belongsTo(Article, { foreignKey: "articleId" });
+
+Article.hasMany(ArticleReviewed, { foreignKey: "articleId" });
+ArticleReviewed.belongsTo(Article, { foreignKey: "articleId" });
+
+Article.hasMany(ArticleApproved, { foreignKey: "articleId" });
+ArticleApproved.belongsTo(Article, { foreignKey: "articleId" });
+
+Article.hasMany(ArticleDuplicate, { foreignKey: "articleId" });
+ArticleDuplicate.belongsTo(Article, { foreignKey: "articleId" });
+
+// --- EntityWhoFoundArticle associations ---
+EntityWhoFoundArticle.hasMany(Article, {
+  foreignKey: "entityWhoFoundArticleId",
+});
+Article.belongsTo(EntityWhoFoundArticle, {
+  foreignKey: "entityWhoFoundArticleId",
+});
 
 console.log("✅ Associations have been set up");
