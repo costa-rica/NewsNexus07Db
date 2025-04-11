@@ -13,9 +13,6 @@ const NewsArticleAggregatorSource = sequelize.define(
     apiKey: {
       type: DataTypes.STRING,
     },
-    state: {
-      type: DataTypes.STRING,
-    },
     isApi: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,

@@ -17,6 +17,7 @@ const Keywords = require("./Keywords");
 const NewsArticleAggregatorSource = require("./NewsArticleAggregatorSource");
 const Article = require("./Article");
 const EntityWhoFoundArticle = require("./EntityWhoFoundArticle");
+const NewsArticleAggregatorSourceStateContract = require("./NewsArticleAggregatorSourceStateContract");
 module.exports = {
   sequelize,
   User,
@@ -37,5 +38,6 @@ module.exports = {
   NewsArticleAggregatorSource,
   Article,
   EntityWhoFoundArticle,
+  NewsArticleAggregatorSourceStateContract,
 };
 require("./_associations");

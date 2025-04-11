@@ -67,14 +67,14 @@ EntityWhoFoundArticle.belongsTo(NewsArticleAggregatorSource, {
   foreignKey: "newsArticleAggregatorSourceId",
 });
 
-NewsArticleAggregatorSource.hasOne(NewsApiRequest, {
+NewsArticleAggregatorSource.hasMany(NewsApiRequest, {
   foreignKey: "newsArticleAggregatorSourceId",
 });
 NewsApiRequest.belongsTo(NewsArticleAggregatorSource, {
   foreignKey: "newsArticleAggregatorSourceId",
 });
 
-NewsArticleAggregatorSource.hasOne(NewsRssRequest, {
+NewsArticleAggregatorSource.hasMany(NewsRssRequest, {
   foreignKey: "newsArticleAggregatorSourceId",
 });
 NewsRssRequest.belongsTo(NewsArticleAggregatorSource, {
@@ -109,6 +109,24 @@ EntityWhoFoundArticle.hasMany(Article, {
 });
 Article.belongsTo(EntityWhoFoundArticle, {
   foreignKey: "entityWhoFoundArticleId",
+});
+
+// --- NewsArticleAggregatorSourceStateContract associations ---
+NewsArticleAggregatorSource.hasMany(NewsArticleAggregatorSourceStateContract, {
+  foreignKey: "newsArticleAggregatorSourceId",
+});
+NewsArticleAggregatorSourceStateContract.belongsTo(
+  NewsArticleAggregatorSource,
+  {
+    foreignKey: "newsArticleAggregatorSourceId",
+  }
+);
+
+State.hasMany(NewsArticleAggregatorSourceStateContract, {
+  foreignKey: "stateId",
+});
+NewsArticleAggregatorSourceStateContract.belongsTo(State, {
+  foreignKey: "stateId",
 });
 
 console.log("✅ Associations have been set up");
