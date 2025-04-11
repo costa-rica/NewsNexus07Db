@@ -16,6 +16,7 @@ const {
   NewsArticleAggregatorSource,
   Article,
   ArticleContent,
+  NewsArticleAggregatorSourceStateContract,
 } = require("./_index");
 
 // --- EntityWhoCategorizedArticle associations ---
