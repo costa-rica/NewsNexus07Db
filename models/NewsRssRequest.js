@@ -6,9 +6,15 @@ const NewsRssRequest = sequelize.define("NewsRssRequest", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  requestCount: {
-    type: DataTypes.STRING,
-    // allowNull: false,
+  // requestCount: {
+  //   type: DataTypes.STRING,
+  //   // allowNull: false,
+  // },
+  countOfArticlesReceivedFromRequest: {
+    type: DataTypes.INTEGER,
+  },
+  countOfArticlesSavedToDbFromRequest: {
+    type: DataTypes.INTEGER,
   },
   dateStartOfRequest: {
     type: DataTypes.DATEONLY,

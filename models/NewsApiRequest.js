@@ -10,14 +10,23 @@ const NewsApiRequest = sequelize.define("NewsApiRequest", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  requestCount: {
-    type: DataTypes.STRING,
+  // requestCount: {
+  //   type: DataTypes.STRING,
+  // },
+  countOfArticlesReceivedFromRequest: {
+    type: DataTypes.INTEGER,
+  },
+  countOfArticlesSavedToDbFromRequest: {
+    type: DataTypes.INTEGER,
   },
   dateStartOfRequest: {
     type: DataTypes.DATEONLY,
   },
   dateEndOfRequest: {
     type: DataTypes.DATEONLY,
+  },
+  status: {
+    type: DataTypes.STRING,
   },
 });
 
