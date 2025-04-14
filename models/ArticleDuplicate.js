@@ -14,6 +14,9 @@ const ArticleDuplicate = sequelize.define("ArticleDuplicate", {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
   },
+  kmNotes: {
+    type: DataTypes.STRING,
+  },
 });
 
 module.exports = ArticleDuplicate;

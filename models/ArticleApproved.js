@@ -14,6 +14,24 @@ const ArticleApproved = sequelize.define("ArticleApproved", {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
   },
+  cpscReferenceNumber: {
+    type: DataTypes.STRING,
+  },
+  headlineForPdfReport: {
+    type: DataTypes.STRING,
+  },
+  publicationNameForPdfReport: {
+    type: DataTypes.STRING,
+  },
+  publicationDateForPdfReport: {
+    type: DataTypes.DATEONLY,
+  },
+  urlForPdfReport: {
+    type: DataTypes.STRING,
+  },
+  kmNotes: {
+    type: DataTypes.STRING,
+  },
 });
 
 module.exports = ArticleApproved;

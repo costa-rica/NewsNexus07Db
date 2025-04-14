@@ -14,6 +14,9 @@ const ArticleReviewed = sequelize.define("ArticleReviewed", {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
   },
+  kmNotes: {
+    type: DataTypes.STRING,
+  },
 });
 
 module.exports = ArticleReviewed;
