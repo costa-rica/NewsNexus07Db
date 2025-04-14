@@ -130,4 +130,14 @@ NewsArticleAggregatorSourceStateContract.belongsTo(State, {
   foreignKey: "stateId",
 });
 
+// // --- Article and State many-to-many association through ArticleStateContract ---
+Article.belongsToMany(State, {
+  through: ArticleStateContract,
+  foreignKey: "articleId",
+});
+State.belongsToMany(Article, {
+  through: ArticleStateContract,
+  foreignKey: "stateId",
+});
+
 console.log("✅ Associations have been set up");
