@@ -26,6 +26,9 @@ const ArticleApproved = sequelize.define("ArticleApproved", {
   publicationDateForPdfReport: {
     type: DataTypes.DATEONLY,
   },
+  textForPdfReport: {
+    type: DataTypes.STRING,
+  },
   urlForPdfReport: {
     type: DataTypes.STRING,
   },
