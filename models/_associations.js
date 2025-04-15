@@ -17,6 +17,7 @@ const {
   Article,
   ArticleContent,
   NewsArticleAggregatorSourceStateContract,
+  ArticleIsRelevant,
 } = require("./_index");
 
 // --- EntityWhoCategorizedArticle associations ---
@@ -59,6 +60,9 @@ ArticleApproved.belongsTo(User, { foreignKey: "userId" });
 
 User.hasMany(ArticleDuplicate, { foreignKey: "userId" });
 ArticleDuplicate.belongsTo(User, { foreignKey: "userId" });
+
+User.hasMany(ArticleIsRelevant, { foreignKey: "userId" });
+ArticleIsRelevant.belongsTo(User, { foreignKey: "userId" });
 
 // --- NewsArticleAggregatorSource associations ---
 NewsArticleAggregatorSource.hasOne(EntityWhoFoundArticle, {
@@ -103,6 +107,9 @@ ArticleApproved.belongsTo(Article, { foreignKey: "articleId" });
 
 Article.hasMany(ArticleDuplicate, { foreignKey: "articleId" });
 ArticleDuplicate.belongsTo(Article, { foreignKey: "articleId" });
+
+Article.hasMany(ArticleIsRelevant, { foreignKey: "articleId" });
+ArticleIsRelevant.belongsTo(Article, { foreignKey: "articleId" });
 
 // --- EntityWhoFoundArticle associations ---
 EntityWhoFoundArticle.hasMany(Article, {
