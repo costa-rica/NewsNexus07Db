@@ -8,11 +8,7 @@ const NewsApiRequest = sequelize.define("NewsApiRequest", {
   },
   keywordId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
   },
-  // requestCount: {
-  //   type: DataTypes.STRING,
-  // },
   countOfArticlesReceivedFromRequest: {
     type: DataTypes.INTEGER,
   },
@@ -26,6 +22,18 @@ const NewsApiRequest = sequelize.define("NewsApiRequest", {
     type: DataTypes.DATEONLY,
   },
   status: {
+    type: DataTypes.STRING,
+  },
+  url: {
+    type: DataTypes.STRING,
+  },
+  andString: {
+    type: DataTypes.STRING,
+  },
+  orString: {
+    type: DataTypes.STRING,
+  },
+  notString: {
     type: DataTypes.STRING,
   },
 });

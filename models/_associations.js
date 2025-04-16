@@ -1,24 +1,26 @@
 const {
   User,
   ArticleKeywordContract,
-  EntityWhoFoundArticle,
   EntityWhoCategorizedArticle,
   ArtificialIntelligence,
   State,
-  Report,
   ArticleStateContract,
+  Report,
   ArticleReportContract,
   ArticleReviewed,
   ArticleApproved,
   ArticleDuplicate,
   NewsApiRequest,
+  ArticleContent,
   NewsRssRequest,
+  Keyword,
   NewsArticleAggregatorSource,
   Article,
-  ArticleContent,
+  EntityWhoFoundArticle,
   NewsArticleAggregatorSourceStateContract,
   ArticleIsRelevant,
-  Keyword,
+  NewsApiRequestWebsiteDomainContract,
+  WebsiteDomain,
 } = require("./_index");
 
 // --- EntityWhoCategorizedArticle associations ---
@@ -162,6 +164,21 @@ Keyword.hasMany(NewsApiRequest, {
 });
 NewsApiRequest.belongsTo(Keyword, {
   foreignKey: "keywordId",
+});
+
+// --- NewsApiRequestWebsiteDomainContract associations: create a many to many relationship between NewsApiRequest and WebsiteDomain ---
+NewsApiRequest.hasMany(NewsApiRequestWebsiteDomainContract, {
+  foreignKey: "newsApiRequestId",
+});
+NewsApiRequestWebsiteDomainContract.belongsTo(NewsApiRequest, {
+  foreignKey: "newsApiRequestId",
+});
+
+WebsiteDomain.hasMany(NewsApiRequestWebsiteDomainContract, {
+  foreignKey: "websiteDomainId",
+});
+NewsApiRequestWebsiteDomainContract.belongsTo(WebsiteDomain, {
+  foreignKey: "websiteDomainId",
 });
 
 console.log("✅ Associations have been set up");
