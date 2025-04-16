@@ -18,6 +18,7 @@ const {
   ArticleContent,
   NewsArticleAggregatorSourceStateContract,
   ArticleIsRelevant,
+  Keyword,
 } = require("./_index");
 
 // --- EntityWhoCategorizedArticle associations ---
@@ -137,7 +138,7 @@ NewsArticleAggregatorSourceStateContract.belongsTo(State, {
   foreignKey: "stateId",
 });
 
-// // --- Article and State many-to-many association through ArticleStateContract ---
+// --- Article has many to many State (through ArticleStateContract) ---
 Article.belongsToMany(State, {
   through: ArticleStateContract,
   foreignKey: "articleId",
@@ -145,6 +146,22 @@ Article.belongsToMany(State, {
 State.belongsToMany(Article, {
   through: ArticleStateContract,
   foreignKey: "stateId",
+});
+
+// --- NewsApiRequest 0/1 to Many Articles ---
+NewsApiRequest.hasMany(Article, { foreignKey: "newsApiRequestId" });
+Article.belongsTo(NewsApiRequest, { foreignKey: "newsApiRequestId" });
+
+// --- NewsRssRequest 0/1 to Many Articles ---
+NewsRssRequest.hasMany(Article, { foreignKey: "newsRssRequestId" });
+Article.belongsTo(NewsRssRequest, { foreignKey: "newsRssRequestId" });
+
+// --- Keywords has 1 to Many NewsApiRequests ---
+Keyword.hasMany(NewsApiRequest, {
+  foreignKey: "keywordId",
+});
+NewsApiRequest.belongsTo(Keyword, {
+  foreignKey: "keywordId",
 });
 
 console.log("✅ Associations have been set up");

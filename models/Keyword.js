@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("./_connection");
 
-const Keywords = sequelize.define("Keywords", {
+const Keyword = sequelize.define("Keyword", {
   keyword: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -15,4 +15,4 @@ const Keywords = sequelize.define("Keywords", {
   },
 });
 
-module.exports = Keywords;
+module.exports = Keyword;

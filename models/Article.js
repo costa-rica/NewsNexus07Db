@@ -25,7 +25,12 @@ const Article = sequelize.define("Article", {
   },
   entityWhoFoundArticleId: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+  },
+  newsApiRequestId: {
+    type: DataTypes.INTEGER,
+  },
+  newsRssRequestId: {
+    type: DataTypes.INTEGER,
   },
 });
 

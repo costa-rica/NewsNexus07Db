@@ -13,7 +13,7 @@ const ArticleDuplicate = require("./ArticleDuplicate");
 const NewsApiRequest = require("./NewsApiRequest");
 const ArticleContent = require("./ArticleContent");
 const NewsRssRequest = require("./NewsRssRequest");
-const Keywords = require("./Keywords");
+const Keyword = require("./Keyword");
 const NewsArticleAggregatorSource = require("./NewsArticleAggregatorSource");
 const Article = require("./Article");
 const EntityWhoFoundArticle = require("./EntityWhoFoundArticle");
@@ -35,7 +35,7 @@ module.exports = {
   NewsApiRequest,
   ArticleContent,
   NewsRssRequest,
-  Keywords,
+  Keyword,
   NewsArticleAggregatorSource,
   Article,
   EntityWhoFoundArticle,
