@@ -158,13 +158,13 @@ Article.belongsTo(NewsApiRequest, { foreignKey: "newsApiRequestId" });
 NewsRssRequest.hasMany(Article, { foreignKey: "newsRssRequestId" });
 Article.belongsTo(NewsRssRequest, { foreignKey: "newsRssRequestId" });
 
-// --- Keywords has 1 to Many NewsApiRequests ---
-Keyword.hasMany(NewsApiRequest, {
-  foreignKey: "keywordId",
-});
-NewsApiRequest.belongsTo(Keyword, {
-  foreignKey: "keywordId",
-});
+// // --- Keywords has 1 to Many NewsApiRequests ---
+// Keyword.hasMany(NewsApiRequest, {
+//   foreignKey: "keywordId",
+// });
+// NewsApiRequest.belongsTo(Keyword, {
+//   foreignKey: "keywordId",
+// });
 
 // --- NewsApiRequestWebsiteDomainContract associations: create a many to many relationship between NewsApiRequest and WebsiteDomain ---
 NewsApiRequest.hasMany(NewsApiRequestWebsiteDomainContract, {

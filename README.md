@@ -1,6 +1,6 @@
 ![Logo](./docs/images/logoAndNameRound.png)
 
-A Sequelize SQLite module for the NewsNexus05Db and microservices suite of applications.
+A Sequelize SQLite module for the NewsNexus07Db and microservices suite of applications.
 
 ## installation
 
@@ -9,7 +9,7 @@ A Sequelize SQLite module for the NewsNexus05Db and microservices suite of appli
 
 ## import to other apps
 
-`yarn add file:../NewsNexus05Db`
+`yarn add file:../NewsNexus07Db`
 
 ## Environmental Variables
 

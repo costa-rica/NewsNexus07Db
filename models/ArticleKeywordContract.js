@@ -10,10 +10,10 @@ const ArticleKeywordContract = sequelize.define("ArticleKeywordContract", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  keywordId: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
+  // keywordId: {
+  //   type: DataTypes.INTEGER,
+  //   allowNull: false,
+  // },
   ranking: {
     type: DataTypes.FLOAT,
     allowNull: false,
