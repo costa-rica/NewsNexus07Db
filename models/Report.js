@@ -14,6 +14,9 @@ const Report = sequelize.define("Report", {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
   },
+  pathToReport: {
+    type: DataTypes.STRING,
+  },
   userId: {
     type: DataTypes.INTEGER,
     allowNull: false,
