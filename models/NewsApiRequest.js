@@ -6,13 +6,13 @@ const NewsApiRequest = sequelize.define("NewsApiRequest", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  // keywordId: {
-  //   type: DataTypes.INTEGER,
-  // },
   countOfArticlesReceivedFromRequest: {
     type: DataTypes.INTEGER,
   },
   countOfArticlesSavedToDbFromRequest: {
+    type: DataTypes.INTEGER,
+  },
+  countOfArticlesAvailableFromRequest: {
     type: DataTypes.INTEGER,
   },
   dateStartOfRequest: {
