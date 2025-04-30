@@ -36,6 +36,10 @@ const NewsApiRequest = sequelize.define("NewsApiRequest", {
   notString: {
     type: DataTypes.STRING,
   },
+  isFromAutomation: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false,
+  },
 });
 
 module.exports = NewsApiRequest;
