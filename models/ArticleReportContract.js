@@ -10,6 +10,13 @@ const ArticleReportContract = sequelize.define("ArticleReportContract", {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  articleReferenceNumberInReport: {
+    type: DataTypes.STRING,
+  },
+  articleAcceptedByCpsc: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
 });
 
 module.exports = ArticleReportContract;

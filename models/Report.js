@@ -2,19 +2,17 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("./_connection");
 
 const Report = sequelize.define("Report", {
-  hasCsv: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
+  // submittedToClient: {
+  //   type: DataTypes.BOOLEAN,
+  //   defaultValue: false,
+  // },
+  dateSubmittedToClient: {
+    type: DataTypes.DATE,
   },
-  hasPdf: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
-  submittedToClient: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false,
-  },
-  pathToReport: {
+  // pathToReport: {
+  //   type: DataTypes.STRING,
+  // },
+  reportName: {
     type: DataTypes.STRING,
   },
   userId: {
