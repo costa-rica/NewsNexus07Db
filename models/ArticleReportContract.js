@@ -17,6 +17,9 @@ const ArticleReportContract = sequelize.define("ArticleReportContract", {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
   },
+  articleRejectionReason: {
+    type: DataTypes.STRING,
+  },
 });
 
 module.exports = ArticleReportContract;
