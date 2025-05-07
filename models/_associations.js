@@ -21,6 +21,7 @@ const {
   ArticleIsRelevant,
   NewsApiRequestWebsiteDomainContract,
   WebsiteDomain,
+  ArticleEntityWhoCategorizedArticleContract,
 } = require("./_index");
 
 // --- EntityWhoCategorizedArticle associations ---
@@ -179,6 +180,16 @@ WebsiteDomain.hasMany(NewsApiRequestWebsiteDomainContract, {
 });
 NewsApiRequestWebsiteDomainContract.belongsTo(WebsiteDomain, {
   foreignKey: "websiteDomainId",
+});
+
+// --- Article has many to many EntityWhoCategorizedArticle (through ArticleEntityWhoCategorizedArticleContract) ---
+Article.belongsToMany(EntityWhoCategorizedArticle, {
+  through: ArticleEntityWhoCategorizedArticleContract,
+  foreignKey: "articleId",
+});
+EntityWhoCategorizedArticle.belongsToMany(Article, {
+  through: ArticleEntityWhoCategorizedArticleContract,
+  foreignKey: "entityWhoCategorizesId",
 });
 
 console.log("✅ Associations have been set up");

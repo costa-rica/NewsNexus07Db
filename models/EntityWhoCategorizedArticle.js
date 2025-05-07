@@ -6,11 +6,9 @@ const EntityWhoCategorizedArticle = sequelize.define(
   {
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
     artificialIntelligenceId: {
       type: DataTypes.INTEGER,
-      allowNull: false,
     },
   }
 );

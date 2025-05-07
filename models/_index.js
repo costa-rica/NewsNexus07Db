@@ -21,6 +21,7 @@ const NewsArticleAggregatorSourceStateContract = require("./NewsArticleAggregato
 const ArticleIsRelevant = require("./ArticleIsRelevant");
 const NewsApiRequestWebsiteDomainContract = require("./NewsApiRequestWebsiteDomainContract");
 const WebsiteDomain = require("./WebsiteDomain");
+const ArticleEntityWhoCategorizedArticleContract = require("./ArticleEntityWhoCategorizedArticleContract");
 module.exports = {
   sequelize,
   User,
@@ -45,5 +46,6 @@ module.exports = {
   ArticleIsRelevant,
   NewsApiRequestWebsiteDomainContract,
   WebsiteDomain,
+  ArticleEntityWhoCategorizedArticleContract,
 };
 require("./_associations");
