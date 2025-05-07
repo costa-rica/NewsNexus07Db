@@ -18,6 +18,14 @@ const ArticleEntityWhoCategorizedArticleContract = sequelize.define(
     keywordRating: {
       type: DataTypes.FLOAT,
     },
+  },
+  {
+    indexes: [
+      {
+        unique: true,
+        fields: ["articleId", "entityWhoCategorizesId", "keyword"],
+      },
+    ],
   }
 );
 

@@ -183,13 +183,24 @@ NewsApiRequestWebsiteDomainContract.belongsTo(WebsiteDomain, {
 });
 
 // --- Article has many to many EntityWhoCategorizedArticle (through ArticleEntityWhoCategorizedArticleContract) ---
-Article.belongsToMany(EntityWhoCategorizedArticle, {
-  through: ArticleEntityWhoCategorizedArticleContract,
+Article.hasMany(ArticleEntityWhoCategorizedArticleContract, {
   foreignKey: "articleId",
 });
-EntityWhoCategorizedArticle.belongsToMany(Article, {
-  through: ArticleEntityWhoCategorizedArticleContract,
-  foreignKey: "entityWhoCategorizesId",
+ArticleEntityWhoCategorizedArticleContract.belongsTo(Article, {
+  foreignKey: "articleId",
 });
+
+EntityWhoCategorizedArticle.hasMany(
+  ArticleEntityWhoCategorizedArticleContract,
+  {
+    foreignKey: "entityWhoCategorizesId",
+  }
+);
+ArticleEntityWhoCategorizedArticleContract.belongsTo(
+  EntityWhoCategorizedArticle,
+  {
+    foreignKey: "entityWhoCategorizesId",
+  }
+);
 
 console.log("✅ Associations have been set up");
