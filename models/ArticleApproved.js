@@ -14,9 +14,9 @@ const ArticleApproved = sequelize.define("ArticleApproved", {
     type: DataTypes.BOOLEAN,
     defaultValue: true,
   },
-  cpscReferenceNumber: {
-    type: DataTypes.STRING,
-  },
+  // cpscReferenceNumber: {
+  //   type: DataTypes.STRING,
+  // },
   headlineForPdfReport: {
     type: DataTypes.STRING,
   },

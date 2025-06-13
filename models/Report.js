@@ -12,7 +12,10 @@ const Report = sequelize.define("Report", {
   // pathToReport: {
   //   type: DataTypes.STRING,
   // },
-  reportName: {
+  nameCrFormat: {
+    type: DataTypes.STRING,
+  },
+  nameZipFile: {
     type: DataTypes.STRING,
   },
   userId: {
